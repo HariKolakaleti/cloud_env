@@ -9,13 +9,20 @@ export PATH
 #-------------------
 # Personnal Aliases
 #-------------------
+# Generic
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias lt='ls -alt|more'
+alias cls='clear'
 alias clean='rm -rf *~'
 alias ml='cd /Users/harik/work/courses'
+alias src='source ~/.bash_profile'
+
+# For ML
 alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@104.199.121.220'
+alias tflow='source activate tensorflow'
+alias ipy='ipython'
 
 #-------------------
 # Temp Aliases
@@ -28,4 +35,6 @@ export PATH=/home/hari.kolakaleti/anaconda2/bin:$PATH
 # for gitHub
 git config --global user.name "Hari Kolakaketi (Checkin from GoogleCloud)"
 git config --global user.email hari.kolakaleti@gmail.com
+git config --global core.editor "emacs"
+git config --global credential.helper "cache --timeout=3600"
 

@@ -10,7 +10,7 @@
 
 ; key bindings
 (global-set-key (kbd "M-g") 'goto-line)
-(global-set-key (kbd "C-x q") 'query-replace-regexp)
+(global-set-key (kbd "C-c q") 'query-replace-regexp)
 (global-set-key (kbd "C-c o") 'find-file-at-point)
 
 ; load octave/matlab setting
