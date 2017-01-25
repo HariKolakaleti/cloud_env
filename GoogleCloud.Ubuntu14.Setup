@@ -1,0 +1,89 @@
+https://console.cloud.google.com/compute/metadata/sshKeys?_ga=1.253945805.492355037.1485299299&project=alien-cedar-156501
+
+================== ONLY FIRST TIME  ==========================
+# SSH Key generate: only once
+	rm -rf ~/.ssh/GCL.ssh.key*
+	ssh-keygen -t rsa -f ~/.ssh/GCL.ssh.key -C hari.kolakaleti@gmail.com
+	chmod 400 ~/.ssh/GCL.ssh.key
+	cat ~/.ssh/GCL.ssh.key.pub
+
+Firewall setting for VNCSERVER:
+        Go to Networking->Firewall Rules -> Create FireWall Rule ->
+                Name : vncserver
+                sourcetag : 0.0.0.0/0 (connect from anywhere)
+                ports: tcp:5901-5910
+                target tags: IMPORTANT -- keep this empty
+================================================================
+
+Login SSH:
+
+ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
+ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
+
+Basic packages:
+
+sudo apt-get --yes update && sudo apt-get --yes upgrade
+sudo apt-get --yes install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+which gnome-panel gnome-settings-daemon metacity nautilus
+sudo apt-get --yes install vnc4server
+sudo apt-get --yes install emacs24
+sudo apt-get --yes install build-essential
+
+vncserver :1
+vncserver -kill :1
+
+cp ~/.vnc/xstartup ~/.vnc/xstartup.bk
+vi ~/.vnc/xstartup
+----------------------------------
+gnome-panel &
+gnome-settings-daemon &
+metacity &
+nautilus &
+----------------------------------
+
+vncserver -geometry 1278x708 :5901
+#vncserver -geometry 2096x1208 :5901
+
+# from local terminal
+nc [IP_ADDRESS] 5901 --OR-- telnet [IP_ADDRESS] 5901
+
+# chrome
+sudo apt-get --yes install chromium-browser
+
+# Anaconda
+open chrome
+	download from continuum.io
+	select python2.7
+cd Downloads
+bash Anaconda2-4.2.0-Linux-x86_64.sh 
+vi ~/.bashrc
+	export PATH=/home/hari.kolakaleti/anaconda2/bin:$PATH
+
+# tensorflow
+conda create -n tensorflow python=2.7
+source activate tensorflow
+conda install --yes -c conda-forge tensorflow
+conda install --yes IPython
+conda install --yes spyder
+conda install --yes scipy
+conda install --yes scikit-learn
+conda install --yes PIL
+conda install --yes git
+conda install -c conda-forge matplotlib=2.0.0
+pip install h5py
+pip install jupyter
+
+mkdir gitHub
+cd gitHub
+git clone https://github.com/HariKolakaleti/cloud_env.git
+cd cloud_env
+rm -rf ~/.emacs ~/emacs-lisp ~/.bashrc ~/.bash_profile
+cp -f .emacs ~/.
+cp -f -r emacs-lisp ~/.
+cp -f .bashrc ~/.
+cp -f .bash_profile ~/.
+
+git config --global user.name "Hari Kolakaketi (Checkin from GoogleCloud)"
+git config --global user.email hari.kolakaleti@gmail.com
+gyou@example.cooit configyou@example.com --global core.editor "emacs"
+
