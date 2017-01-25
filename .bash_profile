@@ -17,7 +17,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias lt='ls -alt|more'
 alias clean='rm -rf *~'
-alias emacs='open -a /Applications/Emacs.app $1'
 alias ml='cd /Users/harik/work/courses'
 alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@104.199.121.220'
 
