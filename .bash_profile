@@ -6,9 +6,6 @@
 PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH
 
-# added by Anaconda2 4.2.0 installer
-export PATH="/Users/harik/anaconda/bin:$PATH"
-
 #-------------------
 # Personnal Aliases
 #-------------------
@@ -25,6 +22,10 @@ alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@104.199.121.220'
 #-------------------
 alias ex='cd /Users/harik/work/courses/machine_learning_courcera/machine-learning-ex4/ex4'
 
-
 # added by Anaconda2 4.2.0 installer
-export PATH="/Users/harik/anaconda/bin:$PATH"
+export PATH=/home/hari.kolakaleti/anaconda2/bin:$PATH
+
+# for gitHub
+git config --global user.name "Hari Kolakaketi (Checkin from GoogleCloud)"
+git config --global user.email hari.kolakaleti@gmail.com
+
