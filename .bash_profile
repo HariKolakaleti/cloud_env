@@ -15,7 +15,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias lt='ls -alt|more'
 alias cls='clear'
-alias clean='rm -rf *~'
+alias clean='rm -rf *~ .*~'
 alias ml='cd /Users/harik/work/courses'
 alias src='source ~/.bash_profile'
 
