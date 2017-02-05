@@ -14,7 +14,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias lt='ls -alt|more'
-alias cls='clear'
 alias clean='rm -rf *~ .*~'
 alias ml='cd /Users/harik/work/courses'
 alias src='source ~/.bash_profile'
@@ -23,6 +22,20 @@ alias src='source ~/.bash_profile'
 alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@104.199.121.220'
 alias tflow='source activate tensorflow'
 alias ipy='ipython'
+
+# start vnc
+vncServer() {
+    vncserver -geometry 1274x708 :$1
+}
+alias vncs=vncServer
+
+vncServerKill() {
+    vncserver -kill :$1
+}
+alias vnck=vncServerKill
+
+# vncs
+
 
 #-------------------
 # Temp Aliases
