@@ -83,8 +83,20 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
 8. Essentials
    sudo apt-get --yes install emacs24
    sudo apt-get --yes install build-essential
+   sudo apt-get install --yes xclip
 
-9. Checkout cloud env
+9. SSH setup for git
+
+   # Generate ssh keys for git
+   ssh-keygen -t rsa -b 4096 -C "hari.kolakaleti@gmail.com"
+   -- enterfile name : /home/hari.kolakaleti/.ssh/github
+   -- enter passphrase: Red1pill
+
+   # adding ssh key to agent
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/github
+   
+9. Checkout cloud env (using ssh to clone to avoid repeated authentication)
    mkdir gitHub
    cd gitHub
    git clone git@github.com:HariKolakaleti/cloud_env.git
