@@ -10,7 +10,7 @@ sudo apt-get --yes update && sudo apt-get --yes upgrade
 sudo add-apt-repository ppa:kubuntu-ppa/backports
 sudo apt-get update && sudo apt-get dist-upgrade
 sudo apt-get install --yes kubuntu-desktop
-sudo apt-get install lightdm # select lightdm
+sudo apt-get install --yes lightdm # select lightdm
 sudo apt-get install --yes tightvncserver
 sudo apt-get --yes install emacs24
 sudo apt-get --yes install build-essential
@@ -31,6 +31,7 @@ ln -s ~/gitHub/cloud_env/xstartup ~/.vnc/
 wget https://repo.continuum.io/archive/Anaconda3-4.3.0-Linux-x86_64.sh
 cd Downloads
 bash Anaconda3-4.3.0-Linux-x86_64.sh
+source /home/hari.kolakaleti/.bashrc
 
 # Conda packages
 conda create -n tf_36 python=3.6

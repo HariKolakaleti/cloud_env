@@ -31,12 +31,11 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
 
    Google-Cloud-Platform:
 	- Select VM Instances
-	- Name: gcl-8cpu-14ub
+	- Name: ub1604-2cpu-1tb-ssd
 	- Zone: us-west1-a
-	- Machine type: 4CPU, 26GB (select customize)
-	- Boot Disk: Ubuntu 14.04 LTS, 1000GB
+	- Machine type: 2CPU, 13 (select customize)
+	- Boot Disk: Ubuntu 16.04 SSD 1000GB
 	- Everything else is default
-	- $168.77 per month estimated
 
 2. Update IP address:
 
@@ -57,18 +56,21 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    (Red1pill)
 
 5. # Git checkout cloud_env
-sudo apt-get-install git
+sudo apt-get install git
 mkdir gitHub; cd gitHub
 # git clone git@github.com:HariKolakaleti/cloud_env.git; cd
 git clone https://github.com/HariKolakaleti/cloud_env.git; cd
 ln -s gitHub/cloud_env/.bash_profile .
 ln -s gitHub/cloud_env/.emacs .
 ln -s gitHub/cloud_env/emacs-lisp
-ln -s github ~/.ssh/github
-ln -s github.pub ~/.ssh/githubi.pub
+cp gitHub/cloud_env/github ~/.ssh/github
+cp gitHub/cloud_env/github.pub ~/.ssh/githubi.pub
+chmod 600 ~/.ssh/github
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
-gitHub/cloud_env/configUbuntu16
+gitHub/cloud_env/configUbuntu16 |& tee configUbuntu16.log
+
+=== NOT REQUIRED, FOR REFERENCE ONLY
 
 9. SSH setup for git
 
