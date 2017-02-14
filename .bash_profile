@@ -40,6 +40,14 @@ vncServerKill() {
 alias vnck=vncServerKill
 
 #-------------------
+# for linux
+#-------------------
+if [[ $(uname -s) == Linux ]]; then
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+fi
+
+#-------------------
 # Temp Aliases
 #-------------------
 alias ex='cd /Users/harik/work/courses/machine_learning_courcera/machine-learning-ex4/ex4'
