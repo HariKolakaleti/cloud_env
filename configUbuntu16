@@ -48,4 +48,3 @@ yes | pip install h5py
 yes | pip install jupyter
 yes | pip install idx2numpy
 
-

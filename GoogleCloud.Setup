@@ -56,34 +56,19 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    sudo passwd
    (Red1pill)
 
-5. Ubuntu update and upgrade
-   sudo apt-get --yes update && sudo apt-get --yes upgrade
-
-6. Plasma desktop (takes 20-30 mins to complete)
-   -- http://www.tecmint.com/install-kde-plasma-5-in-linux/
-   sudo add-apt-repository ppa:kubuntu-ppa/backports
-   sudo apt-get update && sudo apt-get dist-upgrade
-   sudo apt-get install --yes kubuntu-desktop 
-   sudo apt-get install lightdm
-   	- select <lightdm>
-
-7. VNC server
-   sudo apt-get install --yes tightvncserver
-   vi ~/.vnc/xstart
-      -- comment 1 line, and start kde
-      #/etc/X11/Xsession
-      /usr/bin/startkde &
-   vncserver :1
-
-8. KDE desktop settings
-   - Click on top left -> 'Configure desktop' -> Mouse actions -> Right button -> Application Launcher
-   - Open terminal
-     Right click -> System -> terminal or xterm
-
-8. Essentials
-   sudo apt-get --yes install emacs24
-   sudo apt-get --yes install build-essential
-   sudo apt-get install --yes xclip
+5. # Git checkout cloud_env
+sudo apt-get-install git
+mkdir gitHub; cd gitHub
+# git clone git@github.com:HariKolakaleti/cloud_env.git; cd
+git clone https://github.com/HariKolakaleti/cloud_env.git; cd
+ln -s gitHub/cloud_env/.bash_profile .
+ln -s gitHub/cloud_env/.emacs .
+ln -s gitHub/cloud_env/emacs-lisp
+ln -s github ~/.ssh/github
+ln -s github.pub ~/.ssh/githubi.pub
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/github
+gitHub/cloud_env/configUbuntu16
 
 9. SSH setup for git
 
@@ -96,45 +81,3 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    eval "$(ssh-agent -s)"
    ssh-add ~/.ssh/github
    
-9. Checkout cloud env (using ssh to clone to avoid repeated authentication)
-   mkdir gitHub
-   cd gitHub
-   git clone git@github.com:HariKolakaleti/cloud_env.git
-   cd; ln -s gitHub/cloud_env/.bash_profile .   
-
-10. Download Anaconda
-    - Open browzer: www.continuum.io
-    	 - Download linux for python3.6
-    cd Downloads
-    bash Anaconda2-4.2.0-Linux-x86_64.sh 
-
-# tensorflow
-conda create -n tf_36 python=3.6
-source activate tensorflow
-conda install --yes -c conda-forge tensorflow
-conda install --yes IPython
-conda install --yes spyder
-conda install --yes scipy
-conda install --yes scikit-learn
-conda install --yes PIL
-conda install --yes git
-conda install --yes pandas
-conda install -c conda-forge matplotlib=2.0.0
-pip install h5py
-pip install jupyter
-pip install idx2numpy
-
-mkdir gitHub
-cd gitHub
-git clone https://github.com/HariKolakaleti/cloud_env.git
-cd cloud_env
-rm -rf ~/.emacs ~/emacs-lisp ~/.bashrc ~/.bash_profile
-cp -f .emacs ~/.
-cp -f -r emacs-lisp ~/.
-cp -f .bashrc ~/.
-cp -f .bash_profile ~/.
-
-git config --global user.name "Hari Kolakaketi (Checkin from GoogleCloud)"
-git config --global user.email hari.kolakaleti@gmail.com
-gyou@example.cooit configyou@example.com --global core.editor "emacs"
-
