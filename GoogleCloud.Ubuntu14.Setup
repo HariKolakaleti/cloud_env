@@ -1,8 +1,12 @@
+***********************************************************************************************************************
+   FIRST TIME WHEN CREATING A NEW GOOGLE CLOUD ACCOUNT
+***********************************************************************************************************************
+
 https://console.cloud.google.com/compute/metadata/sshKeys?_ga=1.253945805.492355037.1485299299&project=alien-cedar-156501
 
 ================== ONLY FIRST TIME  ==========================
-# SSH Key generate: only once
-	rm -rf ~/.ssh/GCL.ssh.key*
+ # SSH Key generate: only once
+      	rm -rf ~/.ssh/GCL.ssh.key*
 	ssh-keygen -t rsa -f ~/.ssh/GCL.ssh.key -C hari.kolakaleti@gmail.com
 	chmod 400 ~/.ssh/GCL.ssh.key
 	cat ~/.ssh/GCL.ssh.key.pub
@@ -20,35 +24,69 @@ Login SSH:
 ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
 ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
 
-Basic packages:
+***********************************************************************************************************************
+***********************************************************************************************************************
 
-sudo apt-get --yes update && sudo apt-get --yes upgrade
-sudo apt-get --yes install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
-which gnome-panel gnome-settings-daemon metacity nautilus
-sudo apt-get --yes install vnc4server
-sudo apt-get --yes install emacs24
-sudo apt-get --yes install build-essential
+1. Create cloud instance:
 
-vncserver :1
-vncserver -kill :1
+   Google-Cloud-Platform:
+	- Select VM Instances
+	- Name: gcl-8cpu-14ub
+	- Zone: us-west1-a
+	- Machine type: 4CPU, 26GB (select customize)
+	- Boot Disk: Ubuntu 14.04 LTS, 1000GB
+	- Everything else is default
+	- $168.77 per month estimated
 
-cp ~/.vnc/xstartup ~/.vnc/xstartup.bk
-vi ~/.vnc/xstartup
-----------------------------------
-gnome-panel &
-gnome-settings-daemon &
-metacity &
-nautilus &
-----------------------------------
+2. Update IP address:
 
-vncserver -geometry 1278x708 :5901
-#vncserver -geometry 2096x1208 :5901
+   Once instance created, check external IP address on Google Could
+   Change SSH alias in .bash_profile (local) to update IP address
+     - alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@xxx.xxx.xxx.xxx'
 
-# from local terminal
-nc [IP_ADDRESS] 5901 --OR-- telnet [IP_ADDRESS] 5901
+3. Login to Google Could machine
+      gcl-ssh (local)
 
-# chrome
-sudo apt-get --yes install chromium-browser
+      Possible issues:
+	 - WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! 
+	 emacs /Users/harik/.ssh/known_hosts
+	 - Remove the conflicting ip address
+
+4. Setup root password
+   sudo passwd
+   (Red1pill)
+
+5. Ubuntu update and upgrade
+   sudo apt-get --yes update && sudo apt-get --yes upgrade
+
+6. Plasma desktop (takes 20-30 mins to complete)
+   -- http://www.tecmint.com/install-kde-plasma-5-in-linux/
+   sudo add-apt-repository ppa:kubuntu-ppa/backports
+   sudo apt-get update && sudo apt-get dist-upgrade
+   sudo apt-get install --yes kubuntu-desktop 
+   sudo apt-get install lightdm
+   	- select <lightdm>
+
+7. VNC server
+   sudo apt-get install --yes tightvncserver
+   vi ~/.vnc/xstart
+      -- comment 1 line, and start kde
+      #/etc/X11/Xsession
+      /usr/bin/startkde &
+   vncserver :1
+
+8. KDE desktop settings
+   - Click on top left -> 'Configure desktop' -> Mouse actions -> Right button -> Application Launcher
+   - Open terminal
+     Right click -> System -> terminal or xterm
+
+8. Essentials
+   sudo apt-get --yes install emacs24
+   sudo apt-get --yes install build-essential
+
+9. Checkout cloud env
+   mkdir gitHub
+   git clone https://github.com/HariKolakaleti/cloud_env.git
 
 # Anaconda
 open chrome

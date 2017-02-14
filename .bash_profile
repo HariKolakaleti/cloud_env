@@ -29,13 +29,15 @@ vncServer() {
 }
 alias vncs=vncServer
 
+vncServerDesktop() {
+    vncserver -geometry 2096x1208 :$1
+}
+alias vncsd=vncServerDesktop
+
 vncServerKill() {
     vncserver -kill :$1
 }
 alias vnck=vncServerKill
-
-# vncs
-
 
 #-------------------
 # Temp Aliases
