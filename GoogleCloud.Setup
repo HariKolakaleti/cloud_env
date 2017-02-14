@@ -57,8 +57,9 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
 
 5. # Git checkout cloud_env
 sudo apt-get install git
+
+# Git clone with HTTPS
 mkdir gitHub; cd gitHub
-# git clone git@github.com:HariKolakaleti/cloud_env.git; cd
 git clone https://github.com/HariKolakaleti/cloud_env.git; cd
 ln -s gitHub/cloud_env/.bash_profile .
 ln -s gitHub/cloud_env/.emacs .
@@ -68,6 +69,12 @@ cp gitHub/cloud_env/github.pub ~/.ssh/githubi.pub
 chmod 600 ~/.ssh/github
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
+
+# Do again, git clone with ssh
+rm -rf gitHub; mkdir gitHub; cd gitHub
+git clone git@github.com:HariKolakaleti/cloud_env.git
+
+6. Configure Ubuntu
 gitHub/cloud_env/configUbuntu16 |& tee configUbuntu16.log
 
 === NOT REQUIRED, FOR REFERENCE ONLY

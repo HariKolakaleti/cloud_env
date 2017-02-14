@@ -29,9 +29,16 @@ ln -s ~/gitHub/cloud_env/xstartup ~/.vnc/
 
 # Anaconda
 wget https://repo.continuum.io/archive/Anaconda3-4.3.0-Linux-x86_64.sh
-cd Downloads
 bash Anaconda3-4.3.0-Linux-x86_64.sh
+rm -rf Anaconda3-4.3.0-Linux-x86_64.sh
+
+# Need this to find path for conda
 source /home/hari.kolakaleti/.bashrc
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/github
+rm -rf gitHub; mkdir gitHub; cd gitHub
+git clone git@github.com:HariKolakaleti/cloud_env.git
+
 
 # Conda packages
 conda create -n tf_36 python=3.6
