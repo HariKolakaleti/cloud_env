@@ -79,7 +79,7 @@ gitHub/cloud_env/configUbuntu16 |& tee configUbuntu16.log
 
 === NOT REQUIRED, FOR REFERENCE ONLY
 
-9. SSH setup for git
+7. SSH setup for git
 
    # Generate ssh keys for git
    ssh-keygen -t rsa -b 4096 -C "hari.kolakaleti@gmail.com"
@@ -90,3 +90,7 @@ gitHub/cloud_env/configUbuntu16 |& tee configUbuntu16.log
    eval "$(ssh-agent -s)"
    ssh-add ~/.ssh/github
    
+=== ON REMOTE MACHINE
+8. Setting up Chrome remote desktop
+   -- www.chrome.google.com
+   Download Chrome Remote Desktop

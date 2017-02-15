@@ -15,6 +15,8 @@ sudo apt-get install --yes tightvncserver
 sudo apt-get --yes install emacs24
 sudo apt-get --yes install build-essential
 sudo apt-get install --yes xclip
+sudo apt-get install --yes chromium-browser
+sudo apt-get install --yes terminator
 
 # Git checkout cloud_env
 mkdir gitHub; cd gitHub

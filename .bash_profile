@@ -50,7 +50,7 @@ vncServer() {
 }
 
 vncServerDesktop() {
-    vncserver -geometry 2096x1208 :$1
+    vncserver -geometry 1900x1200 :$1
 }
 
 vncServerKill() {
