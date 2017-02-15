@@ -95,3 +95,6 @@ gitHub/cloud_env/gnome.configUbuntu16 |& tee gnome.configUbuntu16.log
     https://medium.com/google-cloud/linux-gui-on-the-google-cloud-platform-800719ab27c5#.l04r8ihvl
 
 11. Set gnome terminal clor - #E2FBFB
+
+12. Auto file completion
+    Settings -> Window Manager -> Keyboard -> Switch window with same application (clear)
