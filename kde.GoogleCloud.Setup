@@ -1,0 +1,96 @@
+***********************************************************************************************************************
+   FIRST TIME WHEN CREATING A NEW GOOGLE CLOUD ACCOUNT
+***********************************************************************************************************************
+
+https://console.cloud.google.com/compute/metadata/sshKeys?_ga=1.253945805.492355037.1485299299&project=alien-cedar-156501
+
+================== ONLY FIRST TIME  ==========================
+ # SSH Key generate: only once
+      	rm -rf ~/.ssh/GCL.ssh.key*
+	ssh-keygen -t rsa -f ~/.ssh/GCL.ssh.key -C hari.kolakaleti@gmail.com
+	chmod 400 ~/.ssh/GCL.ssh.key
+	cat ~/.ssh/GCL.ssh.key.pub
+
+Firewall setting for VNCSERVER:
+        Go to Networking->Firewall Rules -> Create FireWall Rule ->
+                Name : vncserver
+                sourcetag : 0.0.0.0/0 (connect from anywhere)
+                ports: tcp:5901-5910
+                target tags: IMPORTANT -- keep this empty
+================================================================
+
+Login SSH:
+
+ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
+ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+1. Create cloud instance:
+
+   Google-Cloud-Platform:
+	- Select VM Instances
+	- Name: ub1604-2cpu-1tb-ssd
+	- Zone: us-west1-a
+	- Machine type: 2CPU, 13 (select customize)
+	- Boot Disk: Ubuntu 16.04 SSD 1000GB
+	- Everything else is default
+
+2. Update IP address:
+
+   Once instance created, check external IP address on Google Could
+   Change SSH alias in .bash_profile (local) to update IP address
+     - alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@xxx.xxx.xxx.xxx'
+
+3. Login to Google Could machine
+      gcl-ssh (local)
+
+      Possible issues:
+	 - WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! 
+	 emacs /Users/harik/.ssh/known_hosts
+	 - Remove the conflicting ip address
+
+4. Setup root password
+   sudo passwd
+   (Red1pill)
+
+5. # Git checkout cloud_env
+# sudo apt-get install git
+
+# Git clone with HTTPS
+mkdir gitHub; cd gitHub
+git clone https://github.com/HariKolakaleti/cloud_env.git; cd
+ln -s gitHub/cloud_env/.bash_profile .
+ln -s gitHub/cloud_env/.emacs .
+ln -s gitHub/cloud_env/emacs-lisp
+cp gitHub/cloud_env/github ~/.ssh/github
+cp gitHub/cloud_env/github.pub ~/.ssh/githubi.pub
+chmod 600 ~/.ssh/github
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/github
+
+# Do again, git clone with ssh
+rm -rf gitHub; mkdir gitHub; cd gitHub
+git clone git@github.com:HariKolakaleti/cloud_env.git; cd
+
+6. Configure Ubuntu
+gitHub/cloud_env/configUbuntu16 |& tee configUbuntu16.log
+
+=== NOT REQUIRED, FOR REFERENCE ONLY
+
+7. SSH setup for git
+
+   # Generate ssh keys for git
+   ssh-keygen -t rsa -b 4096 -C "hari.kolakaleti@gmail.com"
+   -- enterfile name : /home/hari.kolakaleti/.ssh/github
+   -- enter passphrase: Red1pill
+
+   # adding ssh key to agent
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/github
+   
+=== ON REMOTE MACHINE
+8. Setting up Chrome remote desktop
+   -- www.chrome.google.com
+   Download Chrome Remote Desktop

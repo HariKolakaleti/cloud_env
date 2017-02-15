@@ -3,27 +3,14 @@
 # Ubuntu update and upgrade
 
 sudo apt-get --yes update && sudo apt-get --yes upgrade
-
-# Plasma desktop (takes 20-30 mins to complete)
-#  -- http://www.tecmint.com/install-kde-plasma-5-in-linux/
-
-sudo add-apt-repository ppa:kubuntu-ppa/backports
-sudo apt-get update && sudo apt-get dist-upgrade
-sudo apt-get install --yes kubuntu-desktop
-sudo apt-get install --yes lightdm # select lightdm
+sudo apt-get --yes update && sudo apt-get --yes dist-upgrade
 sudo apt-get install --yes tightvncserver
 sudo apt-get --yes install emacs24
 sudo apt-get --yes install build-essential
-sudo apt-get install --yes xclip
-sudo apt-get install --yes chromium-browser
-sudo apt-get install --yes terminator
-
-# Git checkout cloud_env
-mkdir gitHub; cd gitHub
-git clone git@github.com:HariKolakaleti/cloud_env.git; cd
-ln -s gitHub/cloud_env/.bash_profile .
-ln -s gitHub/cloud_env/.emacs .
-ln -s gitHub/cloud_env/emacs-lisp
+sudo apt-get install --yes aptitude tasksel
+sudo tasksel install gnome-desktop --new-install
+sudo apt-get install --yes xfce4 xfce4-goodies
+sudo apt-get install gnome-tweak-tool
 
 # VNC setup
 vncpasswd
@@ -35,12 +22,7 @@ bash Anaconda3-4.3.0-Linux-x86_64.sh
 rm -rf Anaconda3-4.3.0-Linux-x86_64.sh
 
 # Need this to find path for conda
-source /home/hari.kolakaleti/.bashrc
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/github
-rm -rf gitHub; mkdir gitHub; cd gitHub
-git clone git@github.com:HariKolakaleti/cloud_env.git
-
+source ~/.bash_profile
 
 # Conda packages
 conda create -n tf_36 python=3.6
@@ -57,4 +39,6 @@ conda install --yes -c conda-forge matplotlib=2.0.0
 yes | pip install h5py
 yes | pip install jupyter
 yes | pip install idx2numpy
+
+cd gitHub/cloud_env; chmod +x install_monaco_font.sh; ./install_monaco_font.sh
 
