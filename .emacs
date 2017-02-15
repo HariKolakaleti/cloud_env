@@ -1,7 +1,7 @@
 
 ; window size
-(add-to-list 'default-frame-alist '(height . 32))
-(add-to-list 'default-frame-alist '(width . 108))
+(add-to-list 'default-frame-alist '(height . 26))
+(add-to-list 'default-frame-alist '(width . 100))
 
 ; set custom font
 (custom-set-faces
