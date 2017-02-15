@@ -1,10 +1,7 @@
-! Erase existing bindings
-clear Control
-clear Mod4
-! Map key 37 (left ctrl) to Super_L (i.e. 'cmd')
-keycode  37 = Super_L
-! Map key 133 (left cmd) to Control_L (i.e. 'ctrl)
-keycode 133 = Control_L
-! And update modifier settings
-add control = Control_L
-add mod4    = Super_L
+remove control = Control_L
+remove mod4 = Super_L Super_R
+keysym Control_L = Super_L
+keysym Super_L = Control_L
+keysym Super_R = Control_L
+add control = Control_L Control_R
+add mod4 = Super_L Super_R
