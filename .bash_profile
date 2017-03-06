@@ -68,6 +68,16 @@ alias vncs=vncServer
 alias vncsd=vncServerDesktop
 alias vnck=vncServerKill
 
+#-------------------------
+# SSH for gitHub
+#-------------------------
+sshGitHub() {
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/github
+}
+
+alias gitssh=sshGitHub
+
 #-------------------
 # Temp Aliases
 #-------------------
