@@ -8,6 +8,8 @@ if [ $(uname -s) == Darwin ]; then
 
     # added by Anaconda2 4.2.0 installer
     export PATH="/Users/harik/anaconda/bin:$PATH"
+
+    alias emacs='open -a /Applications/Emacs.app $1'
 fi
 
 #-------------------
@@ -37,7 +39,6 @@ alias lt='ls -alt|more'
 alias clean='rm -rf *~ .*~ '
 alias so='source ~/.bash_profile'
 alias src='source ~/.bash_profile'
-alias emacs='open -a /Applications/Emacs.app $1'
 alias ml='cd /Users/harik/work/courses'
 alias tf27='source activate tf_2.7'
 alias tf35='source activate tf_3.5'
