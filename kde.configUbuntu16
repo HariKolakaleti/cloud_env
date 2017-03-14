@@ -53,4 +53,8 @@ yes | pip install h5py
 yes | pip install jupyter
 yes | pip install idx2numpy
 
+# TFLearn - Ubuntu/Linux 64-bit, CPU only, Python 3.5
+export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.0.0-cp35-cp35m-linux_x86_64.whl
+sudo pip3 install $TF_BINARY_URL
+
 cd gitHub/cloud_env; chmod +x install_monaco_font.sh; ./install_monaco_font.sh
