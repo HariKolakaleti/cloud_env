@@ -17,7 +17,13 @@ Firewall setting for VNCSERVER:
                 sourcetag : 0.0.0.0/0 (connect from anywhere)
                 ports: tcp:5901-5910
                 target tags: IMPORTANT -- keep this empty
-================================================================
+
+================== NEW ACC WITH OLD KEY=======================
+
+# Click -> Compute Engine -> Meta Data -> Add SSH Keys
+  cat ~/.ssh/GCL.ssh.key.pub => and add the contents to SSH Keys and save
+
+==============================================================
 
 Login SSH:
 
