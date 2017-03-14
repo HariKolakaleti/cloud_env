@@ -46,7 +46,7 @@ alias clean='rm -rf *~ .*~ '
 alias so='source ~/.bash_profile'
 alias src='source ~/.bash_profile'
 alias ml='cd /Users/harik/work/courses'
-alias tf36='source activate tf_3.6'
+alias tf36='source activate tf_36'
 alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@35.185.213.88'
 
 #-------------------
