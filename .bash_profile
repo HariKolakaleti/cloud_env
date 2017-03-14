@@ -8,10 +8,6 @@ if [ $(uname -s) == Darwin ]; then
 
     # added by Anaconda2 4.2.0 installer
     export PATH="/Users/harik/anaconda/bin:$PATH"
-
-    # aliases
-    alias emacs='open -a /Applications/Emacs.app $1'
-
 fi
 
 #-------------------
@@ -38,15 +34,15 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias lt='ls -alt|more'
-alias h='history'
-alias c='clear'
-alias cls='clear'
-alias clean='rm -rf *~'
+alias clean='rm -rf *~ .*~ '
 alias so='source ~/.bash_profile'
 alias src='source ~/.bash_profile'
+alias emacs='open -a /Applications/Emacs.app $1'
 alias ml='cd /Users/harik/work/courses'
-alias tflow='source activate tf_3.6'
-alias gcl-ssh='ssh -X -i ~/.ssh/GCL.ssh.key hari.kolakaleti@104.196.245.197'
+alias tf27='source activate tf_2.7'
+alias tf35='source activate tf_3.5'
+alias tfl35='source activate tflearn'
+alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@35.185.213.88'
 
 #-------------------
 # VNC
@@ -57,7 +53,7 @@ vncServer() {
 }
 
 vncServerDesktop() {
-    vncserver -geometry 1900x1200 :$1
+    vncserver -geometry 2096x1208 :$1
 }
 
 vncServerKill() {
@@ -82,3 +78,5 @@ alias gitssh=sshGitHub
 # Temp Aliases
 #-------------------
 
+# Google Cloud Windows Server password
+#  NKCh8B%40L^+*.i
