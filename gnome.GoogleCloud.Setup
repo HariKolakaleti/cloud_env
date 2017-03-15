@@ -18,6 +18,12 @@ Firewall setting for VNCSERVER:
                 ports: tcp:5901-5910
                 target tags: IMPORTANT -- keep this empty
 
+        Go to Networking->Firewall Rules -> Create FireWall Rule ->
+                Name : jupyter
+                sourcetag : 0.0.0.0/0 (connect from anywhere)
+                ports: tcp:8888
+                target tags: IMPORTANT -- keep this empty
+
 ================== NEW ACC WITH OLD KEY=======================
 
 # Click -> Compute Engine -> Meta Data -> Add SSH Keys
