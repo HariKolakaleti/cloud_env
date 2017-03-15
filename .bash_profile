@@ -20,7 +20,12 @@ if [ $(uname -s) == Darwin ]; then
     # for Google Cloud
     
     setupGclSSH() {
-	GCL_IP_ADDR=$1
+	if [ -z "$1" ]; then
+	    GCL_IP_ADDR=`tail -1 ~/.ssh/known_hosts  | awk '{print $1}'`
+	else
+	    GCL_IP_ADDR=$1
+	fi
+	
 	alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@$GCL_IP_ADDR'
     }
     alias gcl=setupGclSSH
@@ -34,7 +39,7 @@ if [ $(uname -s) == Darwin ]; then
     updateJupyterNotebook() {
 	GCL_JPYNB_TOKEN=$1
 	alias gcl-jpynb-token='echo http://0.0.0.0:8888/?token=$GCL_JPYNB_TOKEN'
-	ssh -f -N -L localhost:8888:0.0.0.0:8888 hari.kolakaleti@$GCL_IP_ADDR
+	alias gcl-jpynb-ssh='ssh -f -N -L localhost:8888:0.0.0.0:8888 hari.kolakaleti@$GCL_IP_ADDR'
     }
     alias gcl-jpynb=updateJupyterNotebook
 
