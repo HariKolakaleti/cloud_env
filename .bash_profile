@@ -17,11 +17,11 @@ if [ $(uname -s) == Darwin ]; then
     alias tf35='source activate tf_3.5'
     alias tfl35='source activate tflearn'
 
-    # for Google Cloud SSH
+    # for Google Cloud
+    
     setupGclSSH() {
 	GCL_IP_ADDR=$1
 	alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@$GCL_IP_ADDR'
-	alias gcl-jpynb='ssh -f -N -L localhost:8888:0.0.0.0:8888 hari.kolakaleti@$GCL_IP_ADDR'
     }
     alias gcl=setupGclSSH
 
@@ -30,6 +30,13 @@ if [ $(uname -s) == Darwin ]; then
 	mv -f /tmp/known_hosts ~/.ssh/known_hosts
     }
     alias gcl-rmhost=removeSSH_Host
+
+    updateJupyterNotebook() {
+	GCL_JPYNB_TOKEN=$1
+	alias gcl-jpynb-token='echo http://0.0.0.0:8888/?token=$GCL_JPYNB_TOKEN'
+	ssh -f -N -L localhost:8888:0.0.0.0:8888 hari.kolakaleti@$GCL_IP_ADDR
+    }
+    alias gcl-jpynb=updateJupyterNotebook
 
 fi
 
