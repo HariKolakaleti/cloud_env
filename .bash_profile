@@ -24,6 +24,7 @@ if [ $(uname -s) == Darwin ]; then
 	    GCL_IP_ADDR=`tail -1 ~/.ssh/known_hosts  | awk '{print $1}'`
 	else
 	    GCL_IP_ADDR=$1
+	    rm -rf ~/.ssh/known_hosts
 	fi
 	
 	alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@$GCL_IP_ADDR'
@@ -125,8 +126,18 @@ sshGitHub() {
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/github
 }
-
 alias gitssh=sshGitHub
+
+gitCheckinAndPush() {
+    git add .
+    if [ -z "$1" ]; then
+	git commit
+    else
+	git commit -m "$1"
+    fi
+    git push
+}
+alias gci=gitCheckinAndPush
 
 #-------------------
 # Temp Aliases
