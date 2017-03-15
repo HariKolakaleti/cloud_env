@@ -38,7 +38,12 @@ if [ $(uname -s) == Darwin ]; then
     alias gcl-rmhost=removeSSH_Host
 
     updateJupyterNotebook() {
-	GCL_JPYNB_TOKEN=$1
+	if [ -z "$1" ]; then
+	    GCL_JPYNB_TOKEN=`cat ~/.ssh/jpynb_token`
+	else
+	    GCL_JPYNB_TOKEN=$1
+	    echo $GCL_JPYNB_TOKEN > ~/.ssh/jpynb_token
+	fi
 
 	lsof -i :8888 
 	if [ $? -ne 0 ]; then
