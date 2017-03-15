@@ -9,7 +9,13 @@ if [ $(uname -s) == Darwin ]; then
     # added by Anaconda2 4.2.0 installer
     export PATH="/Users/harik/anaconda/bin:$PATH"
 
+    # misc aliases
     alias emacs='open -a /Applications/Emacs.app $1'
+
+    # for tensorflow & mac
+    alias tf27='source activate tf_2.7'
+    alias tf35='source activate tf_3.5'
+    alias tfl35='source activate tflearn'
 fi
 
 #-------------------
@@ -40,9 +46,7 @@ alias clean='rm -rf *~ .*~ '
 alias so='source ~/.bash_profile'
 alias src='source ~/.bash_profile'
 alias ml='cd /Users/harik/work/courses'
-alias tf27='source activate tf_2.7'
-alias tf35='source activate tf_3.5'
-alias tfl35='source activate tflearn'
+alias tf36='source activate tf_36'
 alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@35.185.213.88'
 
 #-------------------
