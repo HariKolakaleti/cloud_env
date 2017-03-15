@@ -16,6 +16,21 @@ if [ $(uname -s) == Darwin ]; then
     alias tf27='source activate tf_2.7'
     alias tf35='source activate tf_3.5'
     alias tfl35='source activate tflearn'
+
+    # for Google Cloud SSH
+    setupGclSSH() {
+	GCL_IP_ADDR=$1
+	alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@$GCL_IP_ADDR'
+	alias gcl-jpynb='ssh -f -N -L localhost:8888:0.0.0.0:8888 hari.kolakaleti@$GCL_IP_ADDR'
+    }
+    alias gcl=setupGclSSH
+
+    removeSSH_Host() {
+	grep -v $GCL_IP_ADDR ~/.ssh/known_hosts > /tmp/known_hosts
+	mv -f /tmp/known_hosts ~/.ssh/known_hosts
+    }
+    alias gcl-rmhost=removeSSH_Host
+
 fi
 
 #-------------------
@@ -41,7 +56,13 @@ if [ $(uname -s) == Linux ]; then
     }
 
     alias jpynb=startRemoteJupyterNotebook
-    
+
+    killJupyterNotebook() {	
+	kill -9 `ps -elf | grep jupyter | grep python | awk '{print $4}'`
+    }
+
+    alias kill-jpynb=killJupyterNotebook
+
 fi
 
 #-------------------
@@ -56,7 +77,6 @@ alias so='source ~/.bash_profile'
 alias src='source ~/.bash_profile'
 alias ml='cd /Users/harik/work/courses'
 alias tf36='source activate tf_36'
-alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@35.185.213.88'
 
 #-------------------
 # VNC
