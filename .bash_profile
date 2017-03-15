@@ -18,8 +18,8 @@ if [ $(uname -s) == Darwin ]; then
     alias tfl35='source activate tflearn'
 
     # Cloud logins
-    alias gcl='ssh -i gcl'
-    alias awsdl='ssh -i awsdl'
+    alias gcl='ssh gcl'
+    alias awsdl='ssh awsdl'
 
     removeSSH_Host() {
 	grep -v $GCL_IP_ADDR ~/.ssh/known_hosts > /tmp/known_hosts
