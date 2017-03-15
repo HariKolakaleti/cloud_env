@@ -22,34 +22,34 @@ if [ $(uname -s) == Darwin ]; then
     alias awsdl='ssh awsdl'
 
     removeSSH_Host() {
-	grep -v $GCL_IP_ADDR ~/.ssh/known_hosts > /tmp/known_hosts
+	grep -v $1 ~/.ssh/known_hosts > /tmp/known_hosts
 	mv -f /tmp/known_hosts ~/.ssh/known_hosts
     }
     alias rmhost=removeSSH_Host
 
     updateJupyterNotebook() {
-	GCL_JPYNB_START=0
-	if [ -z "$1" ]; then
-	    GCL_JPYNB_TOKEN=`cat ~/.ssh/jpynb_token`
-	    lsof -i :8888
-	    if [ $? -eq 0 ]; then
-		echo "Port 8888 already listening .."
-	    else
-		GCL_JPYNB_START=1
-	    fi
+	lsof -i :8888
+	if [ $? -eq 0 ]; then
+	    while true; do
+		read -p "Port 8888 already listening, kill it? [yn] " yn
+		case $yn in
+		    [Nn]* ) break;;
+		    [Yy]* ) kill -9 `lsof -i :8888 | grep ssh | awk '{print $2}' | sort -u`; break;;
+		    * ) echo "Please answer yes or no.";;
+		esac
+	    done
 	else
-	    GCL_JPYNB_START=1
-	    GCL_JPYNB_TOKEN=$1
-	    echo $GCL_JPYNB_TOKEN > ~/.ssh/jpynb_token
-	    kill -9 `lsof -i :8888 | grep ssh | awk '{print $2}' | sort -u`
-	fi
-	
-	if [ $GCL_JPYNB_START -eq 1 ]; then
+	    if [ -z "$1" ]; then
+		GCL_JPYNB_TOKEN=`cat ~/.ssh/jpynb_token`
+	    else
+		GCL_JPYNB_TOKEN=$1
+		echo $GCL_JPYNB_TOKEN > ~/.ssh/jpynb_token
+	    fi
+
 	    echo "Starting port 8888 .."
-	    ssh -f -N -L localhost:8888:0.0.0.0:8888 hari.kolakaleti@$GCL_IP_ADDR
+	    ssh -f -N -L localhost:8888:0.0.0.0:8888 gcl		
 	fi
 
-	GCL_JPYNB_START=0
 	alias gcl-jpynb-token='echo http://0.0.0.0:8888/?token=$GCL_JPYNB_TOKEN'
     }
     alias gcl-jpynb=updateJupyterNotebook
