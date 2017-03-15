@@ -133,7 +133,9 @@ gitCheckinAndPush() {
     git commit
     git push
 }
+
 alias gci=gitCheckinAndPush
+alias gpu='git pull'
 
 #-------------------
 # Temp Aliases
