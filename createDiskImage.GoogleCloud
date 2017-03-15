@@ -11,44 +11,27 @@ VM Instance
 	1. We need a active VM instance whose image we want to create
 
 	2. Snapshots -> Create SnapShot
-		- Name: 
-			basic-tensorflow-snapshot-03-14-17
-		- Description: 
-			Basic tensor flow snapshop with all required packages
-		- Select source disk
-			Select Current VM instance running
+		- Name: basic-tensorflow-snapshot-03-14-17
+		- Description: Basic tensor flow snapshop with all required packages
+		- Select source disk: Select Current VM instance running
 		- Create 
 
 	2. Disks -> Create Disk
-		- Name:
-			basic-tensorflow-disk-03-14-17
-		- Description
-			Basic tensor flow disk with all required packages
-		- Disk type:
-			SSD Persistent disk
-		- Source type -> Snapshot
-			basic-tensorflow-snapshot-03-14-17
-		- Size
-			80GB
+		- Name: basic-tensorflow-disk-03-14-17
+		- Description: Basic tensor flow disk with all required packages
+		- Disk type: SSD Persistent disk
+		- Source type -> Snapshot: basic-tensorflow-snapshot-03-14-17
+		- Size: 80GB
 		- Create
 
 	3. Images -> Create Image
-		- Name:
-			basic-tensorflow-image-03-14-17
-		- Description:
-			Basic tensor flow image with all required packages
-		 - Source 
-			Disk
-		 - Source disk
-			basic-tensorflow-disk-03-14-17	
+		- Name: basic-tensorflow-image-03-14-17
+		- Description: Basic tensor flow image with all required packages
+		- Source: Disk: basic-tensorflow-disk-03-14-17	
 
 	4. Click -> basic-tensorflow-image-03-14-17
 		- Create Instance
-		- Name:
-			ub16-basic-cpu-1
-		- Machine type
-			2 x CPU; 13 GB Mem
-		- Boot disk 
-			basic-tensorflow-image-03-14-17
-		- Create
-
+		- Name: ub16-basic-cpu-1
+		- Machine type: 2 x CPU; 13 GB Mem
+		- Boot disk: basic-tensorflow-image-03-14-17
+		- Create 

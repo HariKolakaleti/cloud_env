@@ -33,6 +33,15 @@ if [ $(uname -s) == Linux ]; then
 
     # added by Anaconda2 4.2.0 installer
     export PATH=/home/hari.kolakaleti/anaconda3/bin:$PATH
+
+    # remote jupyter notebook
+    startRemoteJupyterNotebook() {
+	jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser &       
+	disown `ps -elf | grep jupyter | grep python | awk '{print $4}'`
+    }
+
+    alias jpynb=startRemoteJupyterNotebook
+    
 fi
 
 #-------------------
