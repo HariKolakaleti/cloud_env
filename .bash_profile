@@ -17,25 +17,15 @@ if [ $(uname -s) == Darwin ]; then
     alias tf35='source activate tf_3.5'
     alias tfl35='source activate tflearn'
 
-    # for Google Cloud
-    
-    setupGclSSH() {
-	if [ -z "$1" ]; then
-	    GCL_IP_ADDR=`tail -1 ~/.ssh/known_hosts  | awk '{print $1}'`
-	else
-	    GCL_IP_ADDR=$1
-	    rm -rf ~/.ssh/known_hosts
-	fi
-	
-	alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@$GCL_IP_ADDR'
-    }
-    alias gcl=setupGclSSH
+    # Cloud logins
+    alias gcl='ssh -i gcl'
+    alias awsdl='ssh -i awsdl'
 
     removeSSH_Host() {
 	grep -v $GCL_IP_ADDR ~/.ssh/known_hosts > /tmp/known_hosts
 	mv -f /tmp/known_hosts ~/.ssh/known_hosts
     }
-    alias gcl-rmhost=removeSSH_Host
+    alias rmhost=removeSSH_Host
 
     updateJupyterNotebook() {
 	GCL_JPYNB_START=0
