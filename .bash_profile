@@ -38,21 +38,28 @@ if [ $(uname -s) == Darwin ]; then
     alias gcl-rmhost=removeSSH_Host
 
     updateJupyterNotebook() {
+	GCL_JPYNB_START=0
 	if [ -z "$1" ]; then
 	    GCL_JPYNB_TOKEN=`cat ~/.ssh/jpynb_token`
+	    lsof -i :8888
+	    if [ $? -eq 0 ]; then
+		echo "Port 8888 already listening .."
+	    else
+		GCL_JPYNB_START=1
+	    fi
 	else
+	    GCL_JPYNB_START=1
 	    GCL_JPYNB_TOKEN=$1
 	    echo $GCL_JPYNB_TOKEN > ~/.ssh/jpynb_token
+	    kill -9 `lsof -i :8888 | grep ssh | awk '{print $2}' | sort -u`
 	fi
-
-	lsof -i :8888 
-	if [ $? -ne 0 ]; then
+	
+	if [ $GCL_JPYNB_START -eq 1 ]; then
 	    echo "Starting port 8888 .."
 	    ssh -f -N -L localhost:8888:0.0.0.0:8888 hari.kolakaleti@$GCL_IP_ADDR
-	else
-	    echo "Port 8888 already listening .."
 	fi
 
+	GCL_JPYNB_START=0
 	alias gcl-jpynb-token='echo http://0.0.0.0:8888/?token=$GCL_JPYNB_TOKEN'
     }
     alias gcl-jpynb=updateJupyterNotebook
