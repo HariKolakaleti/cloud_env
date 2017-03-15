@@ -24,14 +24,6 @@ Firewall setting for VNCSERVER:
                 ports: tcp:8888
                 target tags: IMPORTANT -- keep this empty
 
-	Go to Networking -> External IP Address ->
-		Name: jupyter-static-ip
-		Description: Jupyter notebook static IP address
-		Region: us-west1
-		Attached to: ub16-basic-cpu-1
-
-	### MAKE SURE TO DELET STATIC IP ASSIGNMENT WHEN DONE, WILL BE CHARGED FOR THIS
-		
 ================== NEW ACC WITH OLD KEY=======================
 
 # Click -> Compute Engine -> Meta Data -> Add SSH Keys

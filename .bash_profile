@@ -38,8 +38,16 @@ if [ $(uname -s) == Darwin ]; then
 
     updateJupyterNotebook() {
 	GCL_JPYNB_TOKEN=$1
+
+	lsof -i :8888 
+	if [ $? -ne 0 ]; then
+	    echo "Starting port 8888 .."
+	    ssh -f -N -L localhost:8888:0.0.0.0:8888 hari.kolakaleti@$GCL_IP_ADDR
+	else
+	    echo "Port 8888 already listening .."
+	fi
+
 	alias gcl-jpynb-token='echo http://0.0.0.0:8888/?token=$GCL_JPYNB_TOKEN'
-	alias gcl-jpynb-ssh='ssh -f -N -L localhost:8888:0.0.0.0:8888 hari.kolakaleti@$GCL_IP_ADDR'
     }
     alias gcl-jpynb=updateJupyterNotebook
 
