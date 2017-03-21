@@ -1,0 +1,13 @@
+1. Login to remote machine
+   tf36; jpynb
+   Get the token (example below)
+     - http://0.0.0.0:8888/?token=a22ecbe0994ec150e0dc73b9381c33a3dc463dd387968631
+
+2. Local (MacBook)
+   gcl-jpynb
+    - kill if already listening on port 8888
+   gcl-jpynb a22ecbe0994ec150e0dc73b9381c33a3dc463dd387968631
+    - use token from link
+
+3. Open browzer (use the link)
+   http://0.0.0.0:8888/?token=a22ecbe0994ec150e0dc73b9381c33a3dc463dd387968631

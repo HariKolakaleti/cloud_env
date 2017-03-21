@@ -38,6 +38,7 @@ conda install --yes git
 conda install --yes pandas
 conda install --yes -c conda-forge matplotlib=2.0.0
 conda install --yes bokeh
+conda install --yes tqdm
 yes | pip install h5py
 yes | pip install jupyter
 yes | pip install idx2numpy

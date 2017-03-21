@@ -74,6 +74,7 @@ if [ $(uname -s) == Linux ]; then
 
     # remote jupyter notebook
     startRemoteJupyterNotebook() {
+	tf36
 	jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser &       
 	disown `ps -elf | grep jupyter | grep python | awk '{print $4}'`
     }
