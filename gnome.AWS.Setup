@@ -83,6 +83,9 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    eval "$(ssh-agent -s)"
    ssh-add ~/.ssh/github
 
+5. For Ether no need step 6
+gitHub/cloud_env/setup.EthereumMining
+
 6. Configure Ubuntu
 gitHub/cloud_env/gnome.configUbuntu16 |& tee gnome.configUbuntu16.log
 
