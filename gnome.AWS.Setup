@@ -84,7 +84,6 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    ssh-add ~/.ssh/github
 
 7. For Ether no need step 8
-su root
 gitHub/cloud_env/disable.nouveau |& tee disable.nouveau.log
 -- reboots
 gitHub/cloud_env/setup.EthereumMining |& tee setup.EthereumMining.log
