@@ -1,4 +1,4 @@
-#!/bin/ssh 
+#!/bin/bash 
 
 sudo cp gitHub/cloud_env/blacklist-nouveau.conf /etc/modprobe.d/blacklist-nouveau.conf
 sudo echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
