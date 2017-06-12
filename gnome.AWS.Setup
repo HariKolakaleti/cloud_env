@@ -68,7 +68,7 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
 
 5. Update
    sudo apt-get --yes update && sudo apt-get --yes upgrade dist-upgrade
-   sudo apt-get update && apt-get install --yes build-essential linux-image-extra-virtual
+   sudo apt-get --yes install build-essential linux-image-extra-virtual
    sudo apt-get --yes install git
    
 6. Git clone
@@ -85,10 +85,13 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    ssh-add ~/.ssh/github
 
 7. For Ether no need step 8
-gitHub/cloud_env/disable.nouveau |& tee disable.nouveau.log
--- reboots
-gitHub/cloud_env/setup.EthereumMining |& tee setup.EthereumMining.log
-sudo ./NVIDIA-Linux-x86_64-367.35.run
+   su root
+   gitHub/cloud_env/disable.nouveau |& tee disable.nouveau.log
+   -- reboots
+   su root
+   gitHub/cloud_env/setup.EthereumMining |& tee setup.EthereumMining.log
+   sudo ./NVIDIA-Linux-x86_64-367.35.run
+   exit
 
 8. Configure Ubuntu
 gitHub/cloud_env/gnome.configUbuntu16 |& tee gnome.configUbuntu16.log

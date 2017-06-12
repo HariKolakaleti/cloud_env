@@ -1,5 +1,9 @@
 #!/bin/bash 
 
+sudo apt-get remove nvidia*
+sudo apt-get autoremove
+sudo apt-get update
+sudo apt-get install dkms build-essential linux-headers-generic
 sudo cp gitHub/cloud_env/blacklist-nouveau.conf /etc/modprobe.d/blacklist-nouveau.conf
 sudo echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
 sudo update-initramfs -u
