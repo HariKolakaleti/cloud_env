@@ -68,8 +68,7 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
 
 5. Update
    sudo apt-get --yes update && sudo apt-get --yes upgrade dist-upgrade
-   sudo apt-get --yes install build-essential linux-image-extra-virtual
-   sudo apt-get --yes install git
+   sudo apt-get --yes install build-essential linux-image-extra-virtual git
    
 6. Git clone
    # Git clone with HTTPS
