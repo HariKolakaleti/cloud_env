@@ -1,0 +1,95 @@
+***********************************************************************************************************************
+   FIRST TIME WHEN CREATING A NEW GOOGLE CLOUD ACCOUNT
+***********************************************************************************************************************
+
+https://console.cloud.google.com/compute/metadata/sshKeys?_ga=1.253945805.492355037.1485299299&project=alien-cedar-156501
+
+================== ONLY FIRST TIME  ==========================
+ # SSH Key generate: only once
+      	rm -rf ~/.ssh/GCL.ssh.key*
+	ssh-keygen -t rsa -f ~/.ssh/GCL.ssh.key -C hari.kolakaleti@gmail.com
+	chmod 400 ~/.ssh/GCL.ssh.key
+	cat ~/.ssh/GCL.ssh.key.pub
+
+Firewall setting for VNCSERVER:
+        Go to Networking->Firewall Rules -> Create FireWall Rule ->
+                Name : vncserver
+                sourcetag : 0.0.0.0/0 (connect from anywhere)
+                ports: tcp:5901-5910
+                target tags: IMPORTANT -- keep this empty
+
+        Go to Networking->Firewall Rules -> Create FireWall Rule ->
+                Name : jupyter
+                sourcetag : 0.0.0.0/0 (connect from anywhere)
+                ports: tcp:8888
+                target tags: IMPORTANT -- keep this empty
+
+================== NEW ACC WITH OLD KEY=======================
+
+# Click -> Compute Engine -> Meta Data -> Add SSH Keys
+  cat ~/.ssh/GCL.ssh.key.pub => and add the contents to SSH Keys and save
+
+==============================================================
+
+Login SSH:
+
+ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
+ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+1. Create cloud instance:
+
+   https://console.cloud.google.com/launcher?project=alien-cedar-156501&cat=INFRASTRUCTURE
+   Click on -> Ubuntu Xenial 
+	- Name: ub16-2cpu-1tb-ssd
+	- Zone: us-west1-a
+	- Machine type: 2CPU, 13 (select customize)
+	- Everything else is default
+
+2. Update IP address:
+
+   Once instance created, check external IP address on Google Could
+   Change SSH alias in .bash_profile (local) to update IP address
+     - alias gcl-ssh='ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@xxx.xxx.xxx.xxx'
+
+3. Login to Google Could machine
+      gcl-ssh (local)
+
+      Possible issues:
+	 - WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! 
+	 emacs /Users/harik/.ssh/known_hosts
+	 - Remove the conflicting ip address
+
+4. Setup root password
+   sudo passwd
+   (Red1pill)
+
+5. Update
+   sudo apt-get --yes update && sudo apt-get --yes upgrade dist-upgrade
+   sudo apt-get --yes install build-essential linux-image-extra-virtual git linux-headers-4.4.0-78-generic
+   
+6. Git clone
+   # Git clone with HTTPS
+   mkdir gitHub; cd gitHub
+   git clone https://github.com/HariKolakaleti/cloud_env.git; cd
+   ln -s gitHub/cloud_env/.bash_profile .
+   ln -s gitHub/cloud_env/.emacs .
+   ln -s gitHub/cloud_env/emacs-lisp
+   cp gitHub/cloud_env/github ~/.ssh/github
+   cp gitHub/cloud_env/github.pub ~/.ssh/githubi.pub
+   chmod 600 ~/.ssh/github
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/github
+
+7. For Ether 
+   su root
+   gitHub/cloud_env/disable.nouveau |& tee disable.nouveau.log
+   -- reboots
+   su root
+   gitHub/cloud_env/setup.EthereumMining |& tee setup.EthereumMining.log
+   sudo ./NVIDIA-Linux-x86_64-367.35.run
+   exit
+
+

@@ -83,7 +83,7 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    eval "$(ssh-agent -s)"
    ssh-add ~/.ssh/github
 
-7. For Ether no need step 8
+7. For Ether 
    su root
    gitHub/cloud_env/disable.nouveau |& tee disable.nouveau.log
    -- reboots
@@ -91,35 +91,3 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    gitHub/cloud_env/setup.EthereumMining |& tee setup.EthereumMining.log
    sudo ./NVIDIA-Linux-x86_64-367.35.run
    exit
-
-8. Configure Ubuntu
-gitHub/cloud_env/gnome.configUbuntu16 |& tee gnome.configUbuntu16.log
-
-=== NOT REQUIRED, FOR REFERENCE ONLY
-
-7. Git clone with ssh
-   # Do again, git clone with ssh
-   rm -rf gitHub; mkdir gitHub; cd gitHub
-   git clone git@github.com:HariKolakaleti/cloud_env.git; cd
-
-8. SSH setup for git
-
-   # Generate ssh keys for git
-   ssh-keygen -t rsa -b 4096 -C "hari.kolakaleti@gmail.com"
-   -- enterfile name : /home/hari.kolakaleti/.ssh/github
-   -- enter passphrase: Red1pill
-
-   # adding ssh key to agent
-   eval "$(ssh-agent -s)"
-   ssh-add ~/.ssh/github
-   
-9. # To configure gnome settings
-   gnome-tweak-tool 
-   
-10. Reference to setup VNC
-    https://medium.com/google-cloud/linux-gui-on-the-google-cloud-platform-800719ab27c5#.l04r8ihvl
-
-11. Set gnome terminal clor - #E2FBFB
-
-12. Auto file completion
-    Settings -> Window Manager -> Keyboard -> Switch window with same application (clear)
