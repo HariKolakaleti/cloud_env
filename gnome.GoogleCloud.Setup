@@ -80,7 +80,7 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    ssh-add ~/.ssh/github
 
 6. Configure Ubuntu
-gitHub/cloud_env/gnome.configUbuntu16 |& tee gnome.configUbuntu16.log
+gitHub/cloud_env/gnome.configUbuntu14 |& tee gnome.configUbuntui14.log
 
 === NOT REQUIRED, FOR REFERENCE ONLY
 
