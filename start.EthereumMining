@@ -8,5 +8,8 @@ if [ $# > 1 ] then
     fi
 fi
 
+# run benchmark 
+ethminer -M -G
+
 # If that step completed without error, then we should be able to run the mining benchmark!
-ethminer -G -F http://eth-eu.dwarfpool.com/${YOUR_ETH_ID}
+ethminer -G -F http://eth-eu.dwarfpool.com/${YOUR_ETH_ID} --farm-recheck 200
