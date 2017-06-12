@@ -88,7 +88,6 @@ gitHub/cloud_env/disable.nouveau |& tee disable.nouveau.log
 -- reboots
 gitHub/cloud_env/setup.EthereumMining |& tee setup.EthereumMining.log
 sudo ./NVIDIA-Linux-x86_64-367.35.run
-exit 
 
 8. Configure Ubuntu
 gitHub/cloud_env/gnome.configUbuntu16 |& tee gnome.configUbuntu16.log
