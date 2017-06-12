@@ -16,4 +16,6 @@ wget http://us.download.nvidia.com/XFree86/Linux-x86_64/367.35/NVIDIA-Linux-x86_
 sudo service lightdm stop
 sudo service gdm stop
 sudo chmod +x NVIDIA-Linux-x86_64-367.35.run
-sudo ./NVIDIA-Linux-x86_64-367.35.run
+
+# run below command separately, not in batch mode
+# sudo ./NVIDIA-Linux-x86_64-367.35.run
