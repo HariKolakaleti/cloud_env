@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Create Ethereum Wallet
+if [ $# > 1 ] then
+    if [[ "$1" = "--geth_account_new" ]] then
+        echo "-->> Creating New Geth account"
+        geth account new
+    fi
+fi
+
+# If that step completed without error, then we should be able to run the mining benchmark!
+ethminer -G -F http://eth-eu.dwarfpool.com/${YOUR_ETH_ID}

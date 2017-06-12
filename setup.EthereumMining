@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Install Ethereum Software
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:ethereum/ethereum
+sudo apt-get update
+
+# Install ethereum, ethminer and geth:
+sudo apt-get install --yes ethereum ethminer geth
+
+# Install (proprietary) nvidia driver
+# sudo apt-get install linux-headers-amd64 build-essential
+
+sudo apt-get purge nvidia*
+reboot
+su root
+service lightdm stop
+apt-get update && apt-get install build-essential
+wget http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_6.5.14_linux_64.run
+chmod +x NVIDIA-Linux-x86_64-367.35.run
+sudo NVIDIA-Linux-x86_64-367.35.run
+
