@@ -1,0 +1,25 @@
+
+Step1:
+	Login to AWS: https://gyrusai.signin.aws.amazon.com/console
+	Create Instance
+		- Create Public/Private key pair
+		- Download and save to local machine: ~/.ssh/keys/gyrus_aws.pem
+		- Add IP address of created instance to ~/.ssh/config
+		  Host aws-ubuntu
+     			HostName 13.56.211.72
+     			User ubuntu
+     			AddKeysToAgent yes
+     			UseKeychain yes
+     			IdentityFile ~/.ssh/keys/gyrus_aws.pem
+Step2:
+	Login to the machine from local machine: ssh aws-ubuntu
+
+Step3:
+	Setup to checkout repos from Gyrus GiuHub
+		- copy file local machine to aws remote: ~/.ssh/keys/gyrus_github.pem
+		- Add GitHub details to ssh config
+		  Host github.com
+     			AddKeysToAgent yes
+     			IdentityFile ~/.ssh/keys/gyrus_github.pem
+	Git clone repo
+		git clone git@github.com:hari-gyrus/cloud_env.git
