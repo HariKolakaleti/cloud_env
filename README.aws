@@ -12,6 +12,10 @@ Step1:
      			UseKeychain yes
      			IdentityFile ~/.ssh/keys/gyrus_aws.pem
 Step2:
+	Add security rule to enable VNC
+		Clink on "Launch Wizard" (right most column in EC2 dashboard)
+		Add inbound rule (Custom TCP rule, 5900-5999 ports)
+Step2:
 	Login to the machine from local machine: ssh aws-ubuntu
 
 Step3:
@@ -23,3 +27,7 @@ Step3:
      			IdentityFile ~/.ssh/keys/gyrus_github.pem
 	Git clone repo
 		git clone git@github.com:hari-gyrus/cloud_env.git
+Step4:
+	Setup required packages
+		cp ~/github/cloud_env/.bash_profile ~/.
+		gnome.configUbuntu14

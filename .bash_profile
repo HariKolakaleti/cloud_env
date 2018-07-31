@@ -60,6 +60,7 @@ fi
 # Linux Specific
 #-------------------
 if [ $(uname -s) == Linux ]; then
+    alias a=alias
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
 
