@@ -14,6 +14,7 @@ sudo apt-get install --yes gnome-tweak-tool
 sudo apt-get install --yes chromium-browser
 sudo apt-get install --yes ubuntu-desktop
 sudo apt-get install --yes python-pip
+sudo apt-get install --yes konsole
 
 # VNC setup
 vncpasswd
