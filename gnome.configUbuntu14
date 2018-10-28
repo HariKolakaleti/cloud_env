@@ -19,7 +19,7 @@ sudo apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-t
 
 # VNC setup
 vncpasswd
-cp gitHub/cloud_env/vnc.xstartup ~.vnc/xstartup
+cp gitHub/cloud_env/vnc.xstartup ~/.vnc/xstartup
 
 # Anaconda
 wget https://repo.continuum.io/archive/Anaconda3-4.3.0-Linux-x86_64.sh
