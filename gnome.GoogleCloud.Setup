@@ -67,6 +67,7 @@ ssh -i ~/.ssh/GCL.ssh.key hari.kolakaleti@[IP_ADDRESS]
    (Red1pill)
 
 5. Git clone
+   sudo apt-get install git --yes
    # Git clone with HTTPS
    mkdir gitHub; cd gitHub
    git clone https://github.com/HariKolakaleti/cloud_env.git; cd

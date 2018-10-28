@@ -15,9 +15,11 @@ sudo apt-get install --yes chromium-browser
 sudo apt-get install --yes ubuntu-desktop
 sudo apt-get install --yes python-pip
 sudo apt-get install --yes konsole
+sudo apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal --yes
 
 # VNC setup
 vncpasswd
+cp gitHub/cloud_env/vnc.xstartup ~.vnc/xstartup
 
 # Anaconda
 wget https://repo.continuum.io/archive/Anaconda3-4.3.0-Linux-x86_64.sh
