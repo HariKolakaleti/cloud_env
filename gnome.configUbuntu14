@@ -51,6 +51,13 @@ yes | pip install h5py
 yes | pip install jupyter
 yes | pip install idx2numpy
 yes | pip install tflearn
+pip install --upgrade pip
+python -m pip install -U matplotlib
+python -m pip install -U sklearn
+python -m pip install -U PyWavelets
+python -m pip install -U markdown
+python -m pip install -U werkzeug
+
 
 cd gitHub/cloud_env; chmod +x install_monaco_font.sh; ./install_monaco_font.sh
 
